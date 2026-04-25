@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+:root {
+    /* Backgrounds */
+    --bg-primary: #090b11;
+    --bg-secondary: #2b3238;
+
+    /* Test */
+    --test: #FFFF05;
+}

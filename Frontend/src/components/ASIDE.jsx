@@ -14,26 +14,26 @@ const ASIDE = () => {
             <div>
                 <div className='mt-6 w-[80%] border-b border-gray-300 mx-auto'>
                     <ul className='flex flex-col gap-5 mb-7'>
-                        <li className='flex justify-start items-center gap-2 ml-2'><House /> Home</li>
-                        <li className='flex justify-start items-center gap-2 ml-2'><Search /> Search</li>
-                        <li className='flex justify-start items-center gap-2 ml-2'><Users /> Layers</li>
+                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><House /> Home</li>
+                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><Search /> Search</li>
+                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><Users /> Layers</li>
                     </ul>
                 </div>
 
                 <div className='mt-6 w-[80%] border-b border-gray-300 mx-auto'>
                     <ul className='flex flex-col gap-5 mb-7'>
-                        <li className='flex justify-start items-center gap-2 ml-2'><Settings /> Setting</li>
-                        <li className='flex justify-start items-center gap-2 ml-2'><LogOut /> Logout</li>
+                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><Settings /> Setting</li>
+                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><LogOut /> Logout</li>
                     </ul>
                 </div>
             </div>
 
             <div className='flex justify-around items-center gap-2'>
-                <img src="https://i.pinimg.com/1200x/fb/1a/39/fb1a3903355eeebf3335aadab88d72a1.jpg" className='rounded-full  w-20 h-20 object-cover'/>
+                <img src="https://i.pinimg.com/1200x/fb/1a/39/fb1a3903355eeebf3335aadab88d72a1.jpg" className='rounded-full  w-20 h-20 object-cover border-4 border-gray-300/20 hover:border-[#5e47b1]'/>
 
                 <div className='min-w-0'>
-                    <h3 className='truncate max-w-[100px]'>Display Name Here</h3>
-                    <h1 className='font-semibold text-gray-400 truncate max-w-[100px]'>username</h1>
+                    <h3 className='truncate max-w-[100px] hover:text-[#5e47b1]'>Display Name Here</h3>
+                    <h1 className='font-semibold text-gray-400 truncate max-w-[100px] hover:text-[#5e47b1]'>username</h1>
                 </div>
 
             </div>

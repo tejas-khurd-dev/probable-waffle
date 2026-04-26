@@ -3,8 +3,17 @@
 :root {
     /* Backgrounds */
     --bg-primary: #090b11;
-    --bg-secondary: #2b3238;
+    --bg-secondary: #161b1fb1;
 
     /* Test */
     --test: #FFFF05;
+}
+
+
+.update-scroll{
+    overflow-x: auto;
+    scrollbar-width: thin;     
+    scrollbar-color: #8352d7 #1f1f1f;
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth;
 }

@@ -1,22 +1,40 @@
 import React from 'react'
+import { useState } from 'react'
 import ASIDE from '../components/ASIDE'
 import HEADER from '../components/HEADER'
-import MAINASIDE from '../components/MAINASIDE'
+import MAINASIDE from '../components/HOME/HOMEASIDE'
+import UPDATES from '../components/HOME/UPDATES'
+import FEED from '../components/HOME/FEED'
 
 const HOME = () => {
+
   return (
-    <div className='flex'>
-        <ASIDE />
+    <div className='flex select-none'>
+        <div className='hidden sm:block'>
+          <ASIDE />
+        </div>
+        
 
         <div>
             <HEADER />
 
             <main>
-                <section id='updates'></section>
-                
-                <section id='posts'></section>
+                <div className='flex'>
+                  <div>
 
-                <MAINASIDE />
+                      <UPDATES />
+                               
+
+                    <div >
+                      <FEED />
+                    </div>
+                  </div>
+                  
+                  
+                  <div className='hidden md:block'>
+                    <MAINASIDE />
+                  </div>
+                </div>
             </main>
 
             <footer></footer>

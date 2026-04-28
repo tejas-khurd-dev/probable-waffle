@@ -1,8 +1,22 @@
 import React from 'react'
 import logo from "../assets/veil_logo.png"
 import { House, Search, Settings, LogOut, Users } from "lucide-react"
+import { useNavigate } from 'react-router-dom'
 
 const ASIDE = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/auth/logout', { method: 'GET' });
+      if (res.ok) {
+        navigate('/login');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className='bg-[var(--bg-primary)] text-white w-50 h-screen fixed z-100'>
         <div className='w-20 mx-3'>
@@ -23,7 +37,7 @@ const ASIDE = () => {
                 <div className='mt-6 w-[80%] border-b border-gray-300 mx-auto'>
                     <ul className='flex flex-col gap-5 mb-7'>
                         <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><Settings /> Setting</li>
-                        <li className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1]'><LogOut /> Logout</li>
+                        <li onClick={handleLogout} className='flex justify-start items-center gap-2 ml-2 hover:text-[#5e47b1] cursor-pointer'><LogOut /> Logout</li>
                     </ul>
                 </div>
             </div>

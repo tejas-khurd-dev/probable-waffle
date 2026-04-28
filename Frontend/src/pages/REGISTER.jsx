@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../assets/veil_logo.png"
 import register_page_background from "../assets/register_page_background.jpg"
 import { Lollipop } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const REGISTER = () => {
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, username, email, password })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        navigate('/');
+      } else {
+        setError(data.message || 'Registration failed');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    }
+  };
+
   return (
     <div>
         <div className='w-screen h-screen relative text-white overflow-hidden'>
@@ -29,23 +57,30 @@ const REGISTER = () => {
                         
                     </div>
 
-                    <form className='ml-2 flex flex-col justify-center items-center gap-4 mt-3'>
+                    <form onSubmit={handleRegister} className='ml-2 flex flex-col justify-center items-center gap-4 mt-3'>
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
+                        <div>
+                            <h3 className='text-lg'>Display Name</h3>
+                            <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} className='border-2 border-[#5e47b1] rounded-2xl px-2 py-1 bg-transparent text-white' />
+                        </div>
+
                         <div>
                             <h3 className='text-lg'>Username</h3>
-                            <input type="text" name="username" id="username" className='border-2 border-[#5e47b1] rounded-2xl' />
+                            <input type="text" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className='border-2 border-[#5e47b1] rounded-2xl px-2 py-1 bg-transparent text-white' />
                         </div>
 
                         <div>
                             <h3 className='text-lg'>email</h3>
-                            <input type="email" name="email" id="email" className='border-2 border-[#5e47b1] rounded-2xl' />
+                            <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className='border-2 border-[#5e47b1] rounded-2xl px-2 py-1 bg-transparent text-white' />
                         </div>
 
                         <div>
                             <h3 className='text-lg'>password</h3>
-                            <input type="text" name="password" id="password" minLength={6} className='border-2 border-[#5e47b1] rounded-2xl' />
+                            <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} className='border-2 border-[#5e47b1] rounded-2xl px-2 py-1 bg-transparent text-white' />
                         </div>
 
-                        <input type="submit" className='border-2 border-[#5e47b1] w-25 rounded-3xl mt-3 cursor-pointer px-1 py-2'/>
+                        <input type="submit" value="Register" className='border-2 border-[#5e47b1] w-25 rounded-3xl mt-3 cursor-pointer px-1 py-2 hover:bg-[#5e47b1]'/>
+                        <p className="text-sm mt-2">Already have an account? <Link to="/login" className="text-[#5e47b1] hover:underline">Login</Link></p>
                     </form>
                 </div>
             </div>
